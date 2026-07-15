@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Código Penal da Delegacia — County, 1910</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=IM+Fell+English+SC&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #ecdfc2;
+    --paper-dark: #ddccA2;
+    --ink: #2b1d12;
+    --ink-soft: #4a3722;
+    --leather: #4a2e1c;
+    --leather-dark: #2f1c10;
+    --brass: #a9793a;
+    --brass-light: #c99a54;
+    --blood: #6b1f1a;
+    --blood-light: #8a2c22;
+    --rule: rgba(43,29,18,0.35);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--leather-dark);
+    background-image:
+      radial-gradient(ellipse at top, #3a2415 0%, #201207 75%);
+    color: var(--ink);
+    font-family: 'Crimson Text', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Paper texture container */
+  .page{
+    max-width: 980px;
+    margin: 48px auto;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.10), transparent 40%),
+      radial-gradient(ellipse at 90% 80%, rgba(0,0,0,0.08), transparent 45%),
+      var(--paper);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.4),
+      0 30px 60px rgba(0,0,0,0.55),
+      inset 0 0 120px rgba(74,46,28,0.18);
+    border: 10px solid var(--leather);
+    outline: 2px solid var(--brass);
+    outline-offset: -16px;
+    position: relative;
+    padding: 0 0 60px 0;
+  }
+
+  .page::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(74,46,28,0.02) 0px, transparent 2px, transparent 4px),
+      repeating-linear-gradient(90deg, rgba(74,46,28,0.015) 0px, transparent 2px, transparent 4px);
+    pointer-events:none;
+  }
+
+  /* HEADER / MASTHEAD */
+  header.masthead{
+    text-align:center;
+    padding: 54px 30px 34px;
+    position: relative;
+  }
+
+  .badge{
+    width: 78px; height: 78px;
+    margin: 0 auto 18px;
+    display:flex; align-items:center; justify-content:center;
+    position: relative;
+  }
+  .badge svg{ width:100%; height:100%; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.35)); }
+
+  .eyebrow{
+    letter-spacing: 0.35em;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  h1.title{
+    font-family: 'Rye', serif;
+    font-weight: 400;
+    font-size: clamp(34px, 6vw, 58px);
+    color: var(--leather);
+    margin: 6px 0 4px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.25), 2px 2px 3px rgba(0,0,0,0.15);
+    letter-spacing: 1px;
+  }
+
+  .subtitle{
+    font-family: 'IM Fell English SC', serif;
+    font-size: 20px;
+    color: var(--blood);
+    letter-spacing: 0.08em;
+  }
+
+  .meta-line{
+    margin-top: 14px;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+
+  .ornament{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin: 22px auto 0;
+    width: 70%;
+    color: var(--brass);
+  }
+  .ornament::before, .ornament::after{
+    content:"";
+    height:1px; flex:1;
+    background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  }
+  .ornament span{ font-size: 20px; transform: rotate(0deg); }
+
+  .intro{
+    max-width: 640px;
+    margin: 26px auto 0;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-style: italic;
+    text-align:center;
+    padding: 0 20px;
+  }
+
+  /* TABLE OF CONTENTS */
+  nav.toc{
+    max-width: 720px;
+    margin: 40px auto 10px;
+    padding: 26px 34px;
+    background: rgba(74,46,28,0.06);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  nav.toc h2{
+    font-family: 'IM Fell English SC', serif;
+    font-size: 20px;
+    text-align:center;
+    letter-spacing: 0.12em;
+    color: var(--leather);
+    margin: 0 0 16px;
+  }
+  nav.toc ol{
+    columns: 2;
+    column-gap: 34px;
+    list-style: none;
+    padding:0; margin:0;
+    font-size: 15px;
+  }
+  nav.toc li{ margin-bottom: 9px; break-inside: avoid; }
+  nav.toc a{
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+    display:inline-block;
+  }
+  nav.toc a:hover{ color: var(--blood); border-color: var(--blood); }
+  nav.toc .num{ color: var(--brass); font-weight:600; margin-right:6px; }
+
+  /* SECTIONS */
+  main{ padding: 10px 46px 0; }
+
+  section.chapter{ margin-top: 58px; scroll-margin-top: 24px; }
+
+  .chapter-head{
+    display:flex; align-items:center; gap:16px;
+    margin-bottom: 6px;
+  }
+  .chapter-num{
+    font-family: 'Rye', serif;
+    font-size: 34px;
+    color: var(--brass);
+    line-height:1;
+    min-width: 52px;
+  }
+  h2.chapter-title{
+    font-family: 'IM Fell English SC', serif;
+    font-size: 27px;
+    letter-spacing: 0.05em;
+    color: var(--leather);
+    margin:0;
+    text-transform: uppercase;
+  }
+  .chapter-rule{
+    height: 2px;
+    background: linear-gradient(90deg, var(--brass) 0%, transparent 100%);
+    margin: 10px 0 22px;
+  }
+
+  .chapter-note{
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    margin: -6px 0 20px;
+  }
+
+  /* GENERAL PROVISIONS LISTS */
+  .provision-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 640px){ .provision-grid{ grid-template-columns: 1fr; } }
+
+  .provision-box{
+    border-left: 3px solid var(--brass);
+    padding: 4px 0 4px 18px;
+  }
+  .provision-box h3{
+    font-family: 'IM Fell English SC', serif;
+    font-size: 17px;
+    color: var(--blood);
+    margin: 0 0 10px;
+    letter-spacing: 0.03em;
+  }
+  .provision-box ul{
+    margin:0; padding-left: 18px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .provision-box ul li::marker{ color: var(--brass); }
+
+  .callout{
+    background: rgba(107,31,26,0.06);
+    border: 1px solid rgba(107,31,26,0.25);
+    border-left: 4px solid var(--blood);
+    padding: 14px 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 18px 0;
+    color: var(--ink-soft);
+  }
+  .callout strong{ color: var(--blood); }
+
+  /* CRIME TABLES */
+  .table-wrap{
+    overflow-x: auto;
+    margin-bottom: 8px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+  }
+  table.crimes{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: rgba(255,255,255,0.15);
+    min-width: 560px;
+  }
+  table.crimes thead th{
+    font-family: 'IM Fell English SC', serif;
+    background: var(--leather);
+    color: var(--paper);
+    text-align: left;
+    padding: 12px 16px;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    font-size: 15px;
+  }
+  table.crimes thead th.center{ text-align:center; }
+  table.crimes tbody td{
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.crimes tbody tr:nth-child(even){ background: rgba(74,46,28,0.045); }
+  table.crimes tbody tr:hover{ background: rgba(169,121,58,0.14); }
+  table.crimes td.crime-name{ font-weight: 600; color: var(--leather); white-space: nowrap; }
+  table.crimes td.desc{ color: var(--ink-soft); min-width: 220px; }
+  table.crimes td.fine, table.crimes td.time{ text-align:center; white-space:nowrap; font-variant-numeric: tabular-nums; }
+  table.crimes td.fine{ color: var(--blood); font-weight:600; }
+  table.crimes td.time{ color: var(--ink-soft); font-style: italic; }
+
+  /* SEVERITY SCALE */
+  .severity-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 10px 0 20px;
+  }
+  @media (max-width: 700px){ .severity-grid{ grid-template-columns: 1fr 1fr; } }
+  .sev-card{
+    padding: 18px 16px;
+    border-radius: 2px;
+    text-align:center;
+    border: 1px solid var(--rule);
+    position: relative;
+    background: rgba(255,255,255,0.18);
+  }
+  .sev-card h4{
+    font-family:'IM Fell English SC', serif;
+    margin: 0 0 6px;
+    font-size: 17px;
+  }
+  .sev-card p{ margin:0; font-size: 13.5px; color: var(--ink-soft); }
+  .sev-leve h4{ color: #4d6b3e; }
+  .sev-leve{ border-top: 4px solid #6f9556; }
+  .sev-media h4{ color: #8a6a1f; }
+  .sev-media{ border-top: 4px solid #c99a2e; }
+  .sev-grave h4{ color: #a04a1f; }
+  .sev-grave{ border-top: 4px solid #c9642e; }
+  .sev-muitograve h4{ color: var(--blood); }
+  .sev-muitograve{ border-top: 4px solid var(--blood); }
+
+  /* ILLEGAL ITEMS TAGS */
+  .tag-cloud{
+    display:flex; flex-wrap:wrap; gap:9px;
+    margin: 16px 0 6px;
+  }
+  .tag{
+    background: var(--leather);
+    color: var(--paper);
+    font-size: 13.5px;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-family: 'IM Fell English SC', serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* EXAMPLE BOX */
+  .example{
+    background: rgba(169,121,58,0.10);
+    border: 1px dashed var(--brass);
+    padding: 18px 22px;
+    margin: 16px 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .example .ex-label{
+    font-family:'IM Fell English SC', serif;
+    color: var(--brass);
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display:block;
+  }
+  .example ul{ margin: 8px 0 0; padding-left: 20px; }
+
+  /* NOTES SECTION */
+  .notes-list{
+    list-style: none;
+    padding:0; margin:0;
+    font-size: 15.5px;
+    line-height: 1.8;
+  }
+  .notes-list li{
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .notes-list li::before{
+    content: "★";
+    position:absolute; left:0; top:1px;
+    color: var(--brass);
+    font-size: 14px;
+  }
+
+  /* FOOTER */
+  footer{
+    text-align:center;
+    margin-top: 64px;
+    padding: 34px 30px 4px;
+  }
+  footer .seal{
+    font-family: 'Rye', serif;
+    font-size: 15px;
+    color: var(--leather);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  footer .sub{
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    margin-top: 6px;
+  }
+
+  /* Back to top */
+  .top-link{
+    display:block;
+    text-align:center;
+    font-size: 13px;
+    color: var(--brass);
+    text-decoration:none;
+    margin-top: 30px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .top-link:hover{ color: var(--blood); }
+
+  @media (max-width: 640px){
+    main{ padding: 10px 20px 0; }
+    header.masthead{ padding: 40px 16px 24px; }
+    .page{ margin: 0; border-width: 6px; outline-offset: -10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="badge">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,3 61,25 85,20 72,42 92,55 68,60 72,84 50,70 28,84 32,60 8,55 28,42 15,20 39,25"
+          fill="#a9793a" stroke="#2b1d12" stroke-width="1.5"/>
+        <circle cx="50" cy="52" r="24" fill="#ecdfc2" stroke="#2b1d12" stroke-width="1.5"/>
+        <text x="50" y="59" text-anchor="middle" font-family="Rye, serif" font-size="20" fill="#4a2e1c">C</text>
+      </svg>
+    </div>
+    <div class="eyebrow">Delegacia Central</div>
+    <h1 class="title">Código Penal</h1>
+    <div class="subtitle">County • Ano de 1910</div>
+    <div class="ornament"><span>✦</span></div>
+    <p class="intro">
+      O presente Código Penal regula os crimes, coimas, penas e medidas aplicáveis pela Delegacia.
+      Este código foi criado para garantir ordem, justiça e segurança, devendo ser aplicado com bom senso e autoridade.
+    </p>
+  </header>
+
+  <nav class="toc">
+    <h2>Índice</h2>
+    <ol>
+      <li><span class="num">I.</span><a href="#disposicoes">Disposições Gerais</a></li>
+      <li><span class="num">II.</span><a href="#agravantes">Circunstâncias Agravantes</a></li>
+      <li><span class="num">III.</span><a href="#atenuantes">Circunstâncias Atenuantes</a></li>
+      <li><span class="num">IV.</span><a href="#autoridade">Crimes Contra a Autoridade</a></li>
+      <li><span class="num">V.</span><a href="#pessoas">Crimes Contra Pessoas</a></li>
+      <li><span class="num">VI.</span><a href="#patrimonio">Crimes Contra o Património</a></li>
+      <li><span class="num">VII.</span><a href="#armas">Armas e Porte de Arma</a></li>
+      <li><span class="num">VIII.</span><a href="#contrabando">Itens Ilegais e Contrabando</a></li>
+      <li><span class="num">IX.</span><a href="#caca">Caça</a></li>
+      <li><span class="num">X.</span><a href="#ordem">Ordem Pública</a></li>
+      <li><span class="num">XI.</span><a href="#economicos">Crimes Económicos</a></li>
+      <li><span class="num">XII.</span><a href="#graves">Crimes Graves</a></li>
+      <li><span class="num">XIII.</span><a href="#justica">Crimes Contra a Justiça</a></li>
+      <li><span class="num">XIV.</span><a href="#funcionarios">Crimes de Funcionários Públicos</a></li>
+      <li><span class="num">XV.</span><a href="#acessorias">Penas Acessórias</a></li>
+      <li><span class="num">XVI.</span><a href="#gravidade">Escala de Gravidade</a></li>
+      <li><span class="num">XVII.</span><a href="#acumulacao">Acumulação de Penas</a></li>
+      <li><span class="num">XVIII.</span><a href="#proteccao">Protecção da Actuação da Delegacia</a></li>
+      <li><span class="num">XIX.</span><a href="#notas">Notas para os Delegados</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- I. DISPOSIÇÕES GERAIS -->
+    <section class="chapter" id="disposicoes">
+      <div class="chapter-head">
+        <span class="chapter-num">I.</span>
+        <h2 class="chapter-title">Disposições Gerais</h2>
+      </div>
+      <div class="chapter-rule"></div>
+
+      <div class="provision-grid">
+        <div class="provision-box">
+          <h3>As penas podem incluir</h3>
+          <ul>
+            <li>Advertência verbal</li>
+            <li>Coima</li>
+            <li>Prisão</li>
+            <li>Trabalhos comunitários</li>
+            <li>Apreensão de bens</li>
+            <li>Apreensão de armas</li>
+            <li>Caducidade de licenças</li>
+            <li>Mandado de captura</li>
+            <li>Despedimento de funcionário público</li>
+          </ul>
+        </div>
+        <div class="provision-box">
+          <h3>Princípios de aplicação</h3>
+          <ul>
+            <li>As penas podem ser acumuladas quando o cidadão cometer mais do que um crime na mesma ocorrência.</li>
+            <li>A autoridade tem legitimidade para agir sempre que exista perigo para cidadãos, bens, ordem pública ou para a própria Delegacia.</li>
+            <li>Nenhum cidadão poderá usar este código para impedir a actuação legítima da autoridade, desde que esta actue dentro do bom senso, da proporcionalidade e da segurança pública.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- II. AGRAVANTES -->
+    <section class="chapter" id="agravantes">
+      <div class="chapter-head">
+        <span class="chapter-num">II.</span>
+        <h2 class="chapter-title">Circunstâncias Agravantes</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <p class="chapter-note">A pena poderá ser aumentada quando existir:</p>
+      <div class="provision-grid">
+        <div class="provision-box">
+          <ul>
+            <li>Uso de arma</li>
+            <li>Reincidência</li>
+            <li>Crime contra autoridade</li>
+            <li>Crime cometido em grupo</li>
+            <li>Crime cometido em estado de embriaguez</li>
+            <li>Fuga à autoridade</li>
+          </ul>
+        </div>
+        <div class="provision-box">
+          <ul>
+            <li>Resistência à detenção</li>
+            <li>Mentira em depoimento</li>
+            <li>Crime cometido dentro da Delegacia</li>
+            <li>Crime cometido em local público movimentado</li>
+            <li>Perigo para civis</li>
+            <li>Tentativa de ocultar provas</li>
+            <li>Uso de máscara ou disfarce durante o crime</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- III. ATENUANTES -->
+    <section class="chapter" id="atenuantes">
+      <div class="chapter-head">
+        <span class="chapter-num">III.</span>
+        <h2 class="chapter-title">Circunstâncias Atenuantes</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <p class="chapter-note">A pena poderá ser reduzida quando o acusado:</p>
+      <div class="provision-box" style="border-color:#6f9556;">
+        <ul>
+          <li>Colaborar com a autoridade</li>
+          <li>Confessar os factos</li>
+          <li>Entregar a arma voluntariamente</li>
+          <li>Devolver os bens roubados</li>
+          <li>Prestar auxílio à vítima</li>
+          <li>Não possuir antecedentes</li>
+          <li>Demonstrar arrependimento</li>
+          <li>Não oferecer resistência</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- IV. CRIMES CONTRA A AUTORIDADE -->
+    <section class="chapter" id="autoridade">
+      <div class="chapter-head">
+        <span class="chapter-num">IV.</span>
+        <h2 class="chapter-title">Crimes Contra a Autoridade</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Falta de respeito à autoridade</td><td class="desc">Insultar, provocar, humilhar ou faltar ao respeito a agente em serviço.</td><td class="fine">15$</td><td class="time">10 min</td></tr>
+            <tr><td class="crime-name">Desobediência</td><td class="desc">Ignorar ordem legítima dada por agente da autoridade.</td><td class="fine">25$</td><td class="time">15 min</td></tr>
+            <tr><td class="crime-name">Perturbação do serviço</td><td class="desc">Impedir ou dificultar o trabalho de um agente durante ocorrência, conversa oficial ou detenção.</td><td class="fine">50$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Resistência à detenção</td><td class="desc">Recusar algemagem, fugir, empurrar, lutar ou dificultar a detenção.</td><td class="fine">50$</td><td class="time">30 min</td></tr>
+            <tr><td class="crime-name">Fuga à autoridade</td><td class="desc">Fugir após ordem clara de paragem, a pé, a cavalo ou em carroça.</td><td class="fine">60$</td><td class="time">30 min</td></tr>
+            <tr><td class="crime-name">Ameaça à autoridade</td><td class="desc">Ameaçar verbalmente ou com gestos qualquer agente.</td><td class="fine">80$</td><td class="time">45 min</td></tr>
+            <tr><td class="crime-name">Agressão à autoridade</td><td class="desc">Agredir fisicamente agente da autoridade.</td><td class="fine">150$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Apontar arma à autoridade</td><td class="desc">Apontar arma a agente, mesmo sem disparar.</td><td class="fine">250$</td><td class="time">90 min</td></tr>
+            <tr><td class="crime-name">Disparo contra autoridade</td><td class="desc">Disparar contra agente, mesmo que não atinja.</td><td class="fine">350$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Invasão da Delegacia</td><td class="desc">Entrar em zona restrita da Delegacia sem autorização.</td><td class="fine">75$</td><td class="time">30 min</td></tr>
+            <tr><td class="crime-name">Tentativa de libertar preso</td><td class="desc">Tentar retirar alguém da cela ou impedir a sua detenção.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- V. CRIMES CONTRA PESSOAS -->
+    <section class="chapter" id="pessoas">
+      <div class="chapter-head">
+        <span class="chapter-num">V.</span>
+        <h2 class="chapter-title">Crimes Contra Pessoas</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Ameaças</td><td class="desc">Ameaçar ferir, matar, roubar ou perseguir alguém.</td><td class="fine">30$</td><td class="time">15 min</td></tr>
+            <tr><td class="crime-name">Agressão simples</td><td class="desc">Socos, pontapés, empurrões ou agressões sem arma.</td><td class="fine">50$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Agressão com arma branca</td><td class="desc">Uso de faca, navalha, machado ou semelhante.</td><td class="fine">150$</td><td class="time">45 min</td></tr>
+            <tr><td class="crime-name">Agressão com arma de fogo</td><td class="desc">Apontar ou disparar contra cidadão.</td><td class="fine">250$</td><td class="time">90 min</td></tr>
+            <tr><td class="crime-name">Sequestro</td><td class="desc">Prender, amarrar ou levar alguém contra a sua vontade.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Tentativa de homicídio</td><td class="desc">Tentar matar alguém, com ou sem sucesso imediato.</td><td class="fine">500$</td><td class="time">180 min</td></tr>
+            <tr><td class="crime-name">Homicídio</td><td class="desc">Matar outro cidadão.</td><td class="fine">750$</td><td class="time">240 min</td></tr>
+            <tr><td class="crime-name">Homicídio de autoridade</td><td class="desc">Matar agente em serviço.</td><td class="fine">1000$</td><td class="time">300 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VI. CRIMES CONTRA O PATRIMÓNIO -->
+    <section class="chapter" id="patrimonio">
+      <div class="chapter-head">
+        <span class="chapter-num">VI.</span>
+        <h2 class="chapter-title">Crimes Contra o Património</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Furto</td><td class="desc">Tirar bens a alguém sem violência.</td><td class="fine">30$</td><td class="time">15 min</td></tr>
+            <tr><td class="crime-name">Roubo</td><td class="desc">Tirar bens através de ameaça ou intimidação.</td><td class="fine">100$</td><td class="time">45 min</td></tr>
+            <tr><td class="crime-name">Roubo à mão armada</td><td class="desc">Roubar utilizando arma branca ou arma de fogo.</td><td class="fine">250$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Roubo a banco</td><td class="desc">Assaltar banco ou participar no assalto.</td><td class="fine">750$</td><td class="time">300 min</td></tr>
+            <tr><td class="crime-name">Roubo de cavalo</td><td class="desc">Roubar, esconder ou vender cavalo alheio.</td><td class="fine">150$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Roubo de gado</td><td class="desc">Roubar vacas, bois, porcos, ovelhas ou animais de criação.</td><td class="fine">200$</td><td class="time">90 min</td></tr>
+            <tr><td class="crime-name">Dano em propriedade</td><td class="desc">Partir, queimar ou danificar bens de terceiros.</td><td class="fine">50$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Incêndio criminoso</td><td class="desc">Ateamento de fogo em edifícios, campos, carroças ou propriedades.</td><td class="fine">300$</td><td class="time">180 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VII. ARMAS -->
+    <section class="chapter" id="armas">
+      <div class="chapter-head">
+        <span class="chapter-num">VII.</span>
+        <h2 class="chapter-title">Armas e Porte de Arma</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Porte sem licença</td><td class="desc">Circular armado sem licença válida.</td><td class="fine">100$</td><td class="time">30 min</td></tr>
+            <tr><td class="crime-name">Exibição indevida de arma</td><td class="desc">Mostrar arma sem necessidade ou para intimidar.</td><td class="fine">75$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Apontar arma a cidadão</td><td class="desc">Apontar arma sem justificação legítima.</td><td class="fine">150$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Disparos em local público</td><td class="desc">Disparar em cidade, vila, saloon ou rua.</td><td class="fine">200$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Disparos contra civis</td><td class="desc">Disparar contra cidadão, mesmo sem matar.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Recusa em largar arma</td><td class="desc">Não largar arma após ordem da autoridade.</td><td class="fine">150$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Posse de arma ilegal</td><td class="desc">Ter arma proibida, roubada ou sem registo.</td><td class="fine">250$</td><td class="time">90 min</td></tr>
+            <tr><td class="crime-name">Venda ilegal de armas</td><td class="desc">Vender ou trocar armas sem autorização.</td><td class="fine">400$</td><td class="time">180 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>Nota —</strong> Sempre que uma arma seja usada num crime, a Delegacia poderá apreendê-la. Quando o cidadão usar arma contra civis ou autoridade, a licença de porte poderá caducar. A recusa em largar arma perante autoridade autoriza o uso de força proporcional.
+      </div>
+    </section>
+
+    <!-- VIII. ITENS ILEGAIS -->
+    <section class="chapter" id="contrabando">
+      <div class="chapter-head">
+        <span class="chapter-num">VIII.</span>
+        <h2 class="chapter-title">Itens Ilegais e Contrabando</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Posse de itens ilegais</td><td class="desc">Transportar itens proibidos sem autorização.</td><td class="fine">100$</td><td class="time">45 min</td></tr>
+            <tr><td class="crime-name">Transporte de contrabando</td><td class="desc">Levar mercadoria ilegal em cavalo, carroça, barco ou comboio.</td><td class="fine">250$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Venda de itens ilegais</td><td class="desc">Vender ou trocar artigos proibidos.</td><td class="fine">300$</td><td class="time">150 min</td></tr>
+            <tr><td class="crime-name">Produção de itens ilegais</td><td class="desc">Fabricar, preparar ou embalar mercadoria proibida.</td><td class="fine">400$</td><td class="time">180 min</td></tr>
+            <tr><td class="crime-name">Posse de produto roubado</td><td class="desc">Ter na posse bens furtados ou roubados.</td><td class="fine">150$</td><td class="time">90 min</td></tr>
+            <tr><td class="crime-name">Ocultação de itens ilegais</td><td class="desc">Esconder mercadoria da autoridade.</td><td class="fine">200$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Recusa de revista legal</td><td class="desc">Recusar revista quando houver suspeita fundada.</td><td class="fine">100$</td><td class="time">60 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="chapter-note" style="margin-top:24px;">São considerados itens ilegais:</p>
+      <div class="tag-cloud">
+        <span class="tag">Drogas</span>
+        <span class="tag">Ópio</span>
+        <span class="tag">Papoila refinada</span>
+        <span class="tag">Moonshine ilegal</span>
+        <span class="tag">Armas ilegais</span>
+        <span class="tag">Munições ilegais</span>
+        <span class="tag">Documentos falsos</span>
+        <span class="tag">Bens roubados</span>
+        <span class="tag">Dinheiro proveniente de crime</span>
+        <span class="tag">Material de assalto</span>
+        <span class="tag">Ferramentas de arrombamento</span>
+        <span class="tag">Máscaras usadas em crimes</span>
+        <span class="tag">Mercadoria de contrabando</span>
+      </div>
+      <div class="callout">
+        <strong>Nota —</strong> Todo o item ilegal poderá ser apreendido pela Delegacia. O desconhecimento da origem ilegal do item não impede a apreensão.
+      </div>
+    </section>
+
+    <!-- IX. CAÇA -->
+    <section class="chapter" id="caca">
+      <div class="chapter-head">
+        <span class="chapter-num">IX.</span>
+        <h2 class="chapter-title">Caça</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Caça sem licença</td><td class="desc">Caçar sem licença válida.</td><td class="fine">75$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Caça em zona proibida</td><td class="desc">Caçar em vila, propriedade privada ou zona protegida.</td><td class="fine">150$</td><td class="time">45 min</td></tr>
+            <tr><td class="crime-name">Abate de espécie protegida</td><td class="desc">Matar animal protegido por decreto da Delegacia.</td><td class="fine">250$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Caça abusiva</td><td class="desc">Abater animais em excesso ou por desperdício.</td><td class="fine">150$</td><td class="time">45 min</td></tr>
+            <tr><td class="crime-name">Venda ilegal de peles</td><td class="desc">Vender peles ou carne obtidas ilegalmente.</td><td class="fine">200$</td><td class="time">60 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>Nota —</strong> A licença de caça poderá ser suspensa ou caducada em caso de reincidência.</div>
+    </section>
+
+    <!-- X. ORDEM PÚBLICA -->
+    <section class="chapter" id="ordem">
+      <div class="chapter-head">
+        <span class="chapter-num">X.</span>
+        <h2 class="chapter-title">Ordem Pública</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Desordem pública</td><td class="desc">Gritos, confusão, tumultos ou desacatos.</td><td class="fine">20$</td><td class="time">10 min</td></tr>
+            <tr><td class="crime-name">Embriaguez desordeira</td><td class="desc">Estar bêbado e causar perturbação.</td><td class="fine">30$</td><td class="time">15 min</td></tr>
+            <tr><td class="crime-name">Briga em local público</td><td class="desc">Envolver-se em luta na rua, saloon ou praça.</td><td class="fine">50$</td><td class="time">25 min</td></tr>
+            <tr><td class="crime-name">Perturbação do serviço da autoridade</td><td class="desc">Interromper ou impedir o trabalho da Delegacia.</td><td class="fine">50$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Entrada ilegal na Delegacia</td><td class="desc">Entrar sem autorização em zona reservada.</td><td class="fine">60$</td><td class="time">25 min</td></tr>
+            <tr><td class="crime-name">Recusa em abandonar local</td><td class="desc">Não sair após ordem legítima.</td><td class="fine">40$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Provocação continuada</td><td class="desc">Insistir em provocar civis ou autoridade após advertência.</td><td class="fine">40$</td><td class="time">20 min</td></tr>
+            <tr><td class="crime-name">Uso indevido de cavalo</td><td class="desc">Entrar com cavalo em edifícios ou causar perigo.</td><td class="fine">50$</td><td class="time">20 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- XI. ECONÓMICOS -->
+    <section class="chapter" id="economicos">
+      <div class="chapter-head">
+        <span class="chapter-num">XI.</span>
+        <h2 class="chapter-title">Crimes Económicos</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Burla</td><td class="desc">Enganar alguém para obter dinheiro ou bens.</td><td class="fine">150$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Falsificação de documentos</td><td class="desc">Criar licença, contrato, identificação ou mandado falso.</td><td class="fine">250$</td><td class="time">90 min</td></tr>
+            <tr><td class="crime-name">Uso de documento falso</td><td class="desc">Apresentar documento falso como verdadeiro.</td><td class="fine">200$</td><td class="time">75 min</td></tr>
+            <tr><td class="crime-name">Contrabando</td><td class="desc">Vender ou transportar mercadoria ilegal.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Comércio sem licença</td><td class="desc">Exercer actividade regulada sem autorização.</td><td class="fine">100$</td><td class="time">45 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- XII. GRAVES -->
+    <section class="chapter" id="graves">
+      <div class="chapter-head">
+        <span class="chapter-num">XII.</span>
+        <h2 class="chapter-title">Crimes Graves</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Formação de bando criminoso</td><td class="desc">Grupo organizado para cometer crimes.</td><td class="fine">500$</td><td class="time">180 min</td></tr>
+            <tr><td class="crime-name">Participação em assalto organizado</td><td class="desc">Participar em roubo planeado com outros indivíduos.</td><td class="fine">600$</td><td class="time">240 min</td></tr>
+            <tr><td class="crime-name">Sequestro</td><td class="desc">Privar alguém da liberdade.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Emboscada à autoridade</td><td class="desc">Preparar ou executar ataque contra agentes.</td><td class="fine">750$</td><td class="time">240 min</td></tr>
+            <tr><td class="crime-name">Terror na vila</td><td class="desc">Causar pânico geral com armas, fogo ou violência.</td><td class="fine">800$</td><td class="time">300 min</td></tr>
+            <tr><td class="crime-name">Traição à Delegacia</td><td class="desc">Ajudar criminosos contra a autoridade.</td><td class="fine">1000$</td><td class="time">300 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- XIII. CONTRA A JUSTIÇA -->
+    <section class="chapter" id="justica">
+      <div class="chapter-head">
+        <span class="chapter-num">XIII.</span>
+        <h2 class="chapter-title">Crimes Contra a Justiça</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Falso testemunho</td><td class="desc">Mentir em depoimento oficial.</td><td class="fine">150$</td><td class="time">60 min</td></tr>
+            <tr><td class="crime-name">Ocultação de criminoso</td><td class="desc">Esconder ou ajudar procurado.</td><td class="fine">250$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Destruição de provas</td><td class="desc">Esconder, destruir ou alterar provas.</td><td class="fine">250$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Fuga da prisão</td><td class="desc">Fugir da cela, escolta ou trabalhos comunitários.</td><td class="fine">300$</td><td class="time">180 min</td></tr>
+            <tr><td class="crime-name">Auxílio à fuga</td><td class="desc">Ajudar preso a escapar.</td><td class="fine">400$</td><td class="time">200 min</td></tr>
+            <tr><td class="crime-name">Suborno</td><td class="desc">Oferecer dinheiro à autoridade para evitar pena.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- XIV. FUNCIONÁRIOS PÚBLICOS -->
+    <section class="chapter" id="funcionarios">
+      <div class="chapter-head">
+        <span class="chapter-num">XIV.</span>
+        <h2 class="chapter-title">Crimes de Funcionários Públicos</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="table-wrap">
+        <table class="crimes">
+          <thead><tr><th>Crime</th><th>Descrição</th><th class="center">Coima</th><th class="center">Prisão</th></tr></thead>
+          <tbody>
+            <tr><td class="crime-name">Abuso de autoridade</td><td class="desc">Usar o cargo para ameaçar, roubar ou favorecer alguém.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Corrupção</td><td class="desc">Aceitar dinheiro ou favores para ignorar crime.</td><td class="fine">500$</td><td class="time">180 min</td></tr>
+            <tr><td class="crime-name">Negligência grave</td><td class="desc">Abandonar posto ou permitir fuga por descuido.</td><td class="fine">200$</td><td class="time">90 min</td></tr>
+            <tr><td class="crime-name">Uso excessivo da força</td><td class="desc">Ferir cidadão rendido sem necessidade.</td><td class="fine">300$</td><td class="time">120 min</td></tr>
+            <tr><td class="crime-name">Conduta indigna</td><td class="desc">Crime cometido por Delegado ou funcionário.</td><td class="fine">500$</td><td class="time">180 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>Nota —</strong> Funcionário público condenado poderá ser suspenso ou despedido. A autoridade não pode ser punida por actuar legitimamente perante risco, fuga, ameaça armada ou desobediência grave.
+      </div>
+    </section>
+
+    <!-- XV. PENAS ACESSÓRIAS -->
+    <section class="chapter" id="acessorias">
+      <div class="chapter-head">
+        <span class="chapter-num">XV.</span>
+        <h2 class="chapter-title">Penas Acessórias</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <p class="chapter-note">A Delegacia poderá aplicar, sempre que justificado:</p>
+      <div class="provision-grid">
+        <div class="provision-box">
+          <ul>
+            <li>Trabalhos comunitários</li>
+            <li>Apreensão da arma</li>
+            <li>Apreensão dos bens ilícitos</li>
+            <li>Apreensão de contrabando</li>
+            <li>Caducidade da licença de porte de arma</li>
+          </ul>
+        </div>
+        <div class="provision-box">
+          <ul>
+            <li>Caducidade da licença de caça</li>
+            <li>Mandado de captura</li>
+            <li>Proibição temporária de entrar em certas vilas</li>
+            <li>Despedimento de funcionário público</li>
+            <li>Registo criminal na Delegacia</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- XVI. ESCALA DE GRAVIDADE -->
+    <section class="chapter" id="gravidade">
+      <div class="chapter-head">
+        <span class="chapter-num">XVI.</span>
+        <h2 class="chapter-title">Escala de Gravidade</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="severity-grid">
+        <div class="sev-card sev-leve">
+          <h4>Leve</h4>
+          <p>Advertência, coima baixa ou até 20 minutos de prisão.</p>
+        </div>
+        <div class="sev-card sev-media">
+          <h4>Média</h4>
+          <p>20 a 60 minutos de prisão.</p>
+        </div>
+        <div class="sev-card sev-grave">
+          <h4>Grave</h4>
+          <p>60 a 180 minutos de prisão.</p>
+        </div>
+        <div class="sev-card sev-muitograve">
+          <h4>Muito Grave</h4>
+          <p>180 minutos ou mais, podendo ser aplicada pena máxima e penas acessórias.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- XVII. ACUMULAÇÃO -->
+    <section class="chapter" id="acumulacao">
+      <div class="chapter-head">
+        <span class="chapter-num">XVII.</span>
+        <h2 class="chapter-title">Acumulação de Penas</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <p style="font-size:15.5px; line-height:1.7; color:var(--ink-soft);">
+        Quando o cidadão cometer vários crimes, as penas podem ser somadas. A autoridade poderá reduzir a pena total caso o acusado colabore.
+      </p>
+      <div class="example">
+        <span class="ex-label">Exemplo prático</span>
+        Um cidadão dispara em local público, foge à autoridade e recusa largar a arma. Poderá ser acusado de:
+        <ul>
+          <li>Disparos em local público</li>
+          <li>Fuga à autoridade</li>
+          <li>Recusa em largar arma</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- XVIII. PROTECÇÃO -->
+    <section class="chapter" id="proteccao">
+      <div class="chapter-head">
+        <span class="chapter-num">XVIII.</span>
+        <h2 class="chapter-title">Protecção da Actuação da Delegacia</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <div class="provision-grid">
+        <div class="provision-box">
+          <h3>Legitimidade da ordem</h3>
+          <p style="font-size:15px; color:var(--ink-soft); line-height:1.65; margin:0 0 10px;">
+            A autoridade poderá agir sempre que exista suspeita razoável de crime. Uma ordem dada por agente em serviço presume-se legítima quando tenha como objectivo:
+          </p>
+          <ul>
+            <li>Proteger civis</li>
+            <li>Impedir crime</li>
+            <li>Deter suspeito</li>
+            <li>Controlar arma</li>
+            <li>Restaurar ordem pública</li>
+            <li>Proteger a Delegacia</li>
+          </ul>
+        </div>
+        <div class="provision-box">
+          <h3>Uso da força</h3>
+          <ul>
+            <li>O cidadão deve obedecer primeiro e reclamar depois através dos meios próprios.</li>
+            <li>A discordância com a autoridade não dá direito a desobedecer, fugir, insultar, ameaçar ou resistir.</li>
+            <li>A força usada pela autoridade será considerada legítima quando proporcional ao perigo existente.</li>
+            <li>A autoridade poderá usar laço, algemas, arma ou força física conforme a gravidade da situação.</li>
+            <li>A força letal só deverá ser usada quando exista perigo imediato para a vida da autoridade ou de civis.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- XIX. NOTAS -->
+    <section class="chapter" id="notas">
+      <div class="chapter-head">
+        <span class="chapter-num">XIX.</span>
+        <h2 class="chapter-title">Notas para os Delegados</h2>
+      </div>
+      <div class="chapter-rule"></div>
+      <ul class="notes-list">
+        <li>Sempre que possível, deve ser dada uma advertência antes da detenção.</li>
+        <li>Em caso de arma na mão, disparos, fuga, agressão ou perigo imediato, a detenção pode ser feita sem aviso prévio.</li>
+        <li>Todos os crimes graves devem ser registados em relatório.</li>
+        <li>Apreensões devem ser anotadas no processo.</li>
+        <li>O Delegado deve aplicar a lei com firmeza, mas sem abuso.</li>
+        <li>O objectivo da Delegacia é manter a ordem, proteger os cidadãos e garantir justiça.</li>
+      </ul>
+    </section>
+
+    <a href="#top" class="top-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">↑ Voltar ao Topo</a>
+
+  </main>
+
+  <footer>
+    <div class="seal">✦ Delegacia Central — County ✦</div>
+    <div class="sub">Código Penal registado e selado no Ano de 1910</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
